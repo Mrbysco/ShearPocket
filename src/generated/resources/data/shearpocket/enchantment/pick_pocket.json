@@ -1,0 +1,23 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.shearpocket.pick_pocket"
+  },
+  "effects": {
+    "shearpocket:pick_pocketing": {}
+  },
+  "max_cost": {
+    "base": 65,
+    "per_level_above_first": 25
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 20,
+    "per_level_above_first": 25
+  },
+  "slots": [
+    "hand"
+  ],
+  "supported_items": "#c:tools/shear",
+  "weight": 2
+}

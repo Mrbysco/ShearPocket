@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+issueTrackerURL="https://github.com/Mrbysco/ShearPocket/issues"
+license="MIT"
+
+[[mods]]
+modId="shearpocket"
+version="${file.jarVersion}"
+displayName="Shear Pocket"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/shear-pocket"
+authors="Mrbysco, ShyNieke"
+description='''
+Adds an enchantment for the Shear that allows pick-pocketing
+'''
+[[dependencies.shearpocket]]
+modId="minecraft"
+type="required"
+versionRange="[1.21,1.22)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.shearpocket]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.1,)"
+ordering="NONE"
+side="BOTH"
