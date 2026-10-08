@@ -1,1 +1,1 @@
-* Add `shearpocket:blacklist` entity type tag
+* Update to 26.1.2
