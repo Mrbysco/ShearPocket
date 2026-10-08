@@ -11,7 +11,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.gossip.GossipType;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -31,7 +31,7 @@ public class PickPocketHandler {
 		ItemStack stack = event.getItemStack();
 		Player player = event.getEntity();
 		ItemStack otherStack = player.getOffhandItem();
-		if (!level.isClientSide() && target instanceof LivingEntity livingEntity && !livingEntity.getType().is(ShearPocketMod.BLACKLIST)) {
+		if (!level.isClientSide() && target instanceof LivingEntity livingEntity && !livingEntity.is(ShearPocketMod.BLACKLIST)) {
 			if (EnchantmentHelper.has(stack, ModEnchantments.PICK_POCKETING.get())) {
 				handlePickpocket(stack, EquipmentSlot.MAINHAND, livingEntity, player);
 			}

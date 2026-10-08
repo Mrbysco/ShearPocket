@@ -15,12 +15,12 @@ Adds an enchantment for the Shear that allows pick-pocketing
 [[dependencies.shearpocket]]
 modId="minecraft"
 type="required"
-versionRange="[1.21,1.22)"
+versionRange="[26.1.1,)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.shearpocket]]
 modId="neoforge"
 type="required"
-versionRange="[21.1.1,)"
+versionRange="[26.1.1.0-alpha,)"
 ordering="NONE"
 side="BOTH"

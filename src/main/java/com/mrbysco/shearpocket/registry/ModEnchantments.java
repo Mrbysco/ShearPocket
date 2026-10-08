@@ -6,8 +6,8 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Unit;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.Item;
@@ -49,11 +49,11 @@ public class ModEnchantments {
 	}
 
 	private static ResourceKey<Enchantment> key(String path) {
-		return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(ShearPocketMod.MOD_ID, path));
+		return ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(ShearPocketMod.MOD_ID, path));
 	}
 
 	private static void register(BootstrapContext<Enchantment> context, ResourceKey<Enchantment> resourceKey,
 	                             Enchantment.Builder builder) {
-		context.register(resourceKey, builder.build(resourceKey.location()));
+		context.register(resourceKey, builder.build(resourceKey.identifier()));
 	}
 }
