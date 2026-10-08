@@ -8,6 +8,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EnchantmentTagsProvider;
+import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.locale.Language;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -34,9 +35,10 @@ public class ModDatagen {
 		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
-		event.createProvider(ModLanguage::new);
+		event.createProvider(ModLanguageProvider::new);
 
 		generator.addProvider(event.includeServer(), new ModEnchantmentTagProvider(packOutput, lookupProvider, helper));
+		generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(packOutput, lookupProvider, helper));
 	}
 
 	private static class ModEnchantmentTagProvider extends EnchantmentTagsProvider {
@@ -50,9 +52,19 @@ public class ModDatagen {
 		}
 	}
 
+	private static class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
+		public ModEntityTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper fileHelper) {
+			super(output, lookupProvider, ShearPocketMod.MOD_ID, fileHelper);
+		}
 
-	private static class ModLanguage extends LanguageProvider {
-		public ModLanguage(PackOutput gen) {
+		@Override
+		protected void addTags(HolderLookup.Provider provider) {
+			tag(ShearPocketMod.BLACKLIST);
+		}
+	}
+
+	private static class ModLanguageProvider extends LanguageProvider {
+		public ModLanguageProvider(PackOutput gen) {
 			super(gen, ShearPocketMod.MOD_ID, Language.DEFAULT);
 		}
 

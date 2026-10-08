@@ -1,5 +1,6 @@
 package com.mrbysco.shearpocket.handler;
 
+import com.mrbysco.shearpocket.ShearPocketMod;
 import com.mrbysco.shearpocket.config.ShearConfig;
 import com.mrbysco.shearpocket.registry.ModEnchantments;
 import net.minecraft.sounds.SoundEvents;
@@ -30,7 +31,7 @@ public class PickPocketHandler {
 		ItemStack stack = event.getItemStack();
 		Player player = event.getEntity();
 		ItemStack otherStack = player.getOffhandItem();
-		if (!level.isClientSide() && target instanceof LivingEntity livingEntity) {
+		if (!level.isClientSide() && target instanceof LivingEntity livingEntity && !livingEntity.getType().is(ShearPocketMod.BLACKLIST)) {
 			if (EnchantmentHelper.has(stack, ModEnchantments.PICK_POCKETING.get())) {
 				handlePickpocket(stack, EquipmentSlot.MAINHAND, livingEntity, player);
 			}
