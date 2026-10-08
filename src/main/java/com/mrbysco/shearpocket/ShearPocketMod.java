@@ -24,7 +24,7 @@ public class ShearPocketMod {
 	public static TagKey<EntityType<?>> BLACKLIST = TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, "blacklist"));
 
 	public ShearPocketMod(IEventBus eventBus, Dist dist, ModContainer container) {
-		container.registerConfig(ModConfig.Type.COMMON, ShearConfig.commonSpec);
+		container.registerConfig(ModConfig.Type.LOCAL, ShearConfig.commonSpec);
 
 		ModEnchantments.ENCHANTMENT_EFFECT_REGISTER.register(eventBus);
 

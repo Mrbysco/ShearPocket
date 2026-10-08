@@ -17,18 +17,20 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.data.event.GatherDataRegistryEntriesEvent;
 
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber
 public class ModDatagen {
-	private final static RegistrySetBuilder REGISTRY = new RegistrySetBuilder()
-			.add(Registries.ENCHANTMENT, ModEnchantments::bootstrap);
+	@SubscribeEvent
+	static void onGatherRegistries(GatherDataRegistryEntriesEvent event) {
+		event.gatherFor(ShearPocketMod.MOD_ID)
+				.add(Registries.ENCHANTMENT, ModEnchantments::bootstrap);
+	}
 
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent.Client event) {
-		event.createDatapackRegistryObjects(REGISTRY);
-
 		event.createProvider(ModLanguageProvider::new);
 		event.createProvider(ModEnchantmentTagProvider::new);
 		event.createProvider(ModEntityTypeTagsProvider::new);

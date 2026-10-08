@@ -63,7 +63,7 @@ public class PickPocketHandler {
 		Vec3 direction = playerEye.subtract(targetEye).normalize();
 		Vec3 deltaMovement = direction.scale(0.35).add(0, 0.15, 0);
 		droppedItem.setDeltaMovement(deltaMovement);
-		droppedItem.hurtMarked = true;
+		droppedItem.syncVelocity = true;
 
 		target.level().addFreshEntity(droppedItem);
 		target.setItemInHand(hand, ItemStack.EMPTY);
