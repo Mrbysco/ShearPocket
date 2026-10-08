@@ -1,1 +1,1 @@
-* Initial release
+* Add `shearpocket:blacklist` entity type tag
